@@ -96,7 +96,7 @@ export const PROFILE: Profile = {
   resumePdf: "/resume.pdf",
   dept: "Distributed Systems & Architecture",
   idNo: "KGS-91117",
-  validTill: "2017",
+  validTill: "2013",
 };
 
 export const NAV: NavItem[] = [
