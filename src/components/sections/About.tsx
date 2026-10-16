@@ -204,7 +204,7 @@ export const About: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Metadata Rows: ID No, Dept, Valid till */}
+                    {/* Metadata Rows: ID No, Dept, Valid from */}
                     <div className="space-y-1.5 border-t border-b border-[var(--line)] py-2 text-[10px] font-mono text-[var(--ink-2)]">
                       <div className="flex justify-between">
                         <span className="text-[var(--mute)]">ID NO:</span>
@@ -217,7 +217,7 @@ export const About: React.FC = () => {
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-[var(--mute)]">VALID TILL:</span>
+                        <span className="text-[var(--mute)]">VALID FROM:</span>
                         <span className="font-bold">{PROFILE.validTill}</span>
                       </div>
                     </div>
