@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --paper: #f4f2ee;
+    --card: #ffffff;
+    --ink: #0d0d0d;
+    --ink-2: #3a3a3a;
+    --mute: #77756f;
+    --faint: #a9a6a0;
+    --line: rgba(13, 13, 13, 0.1);
+    --soft: #e9e6e0;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --gutter: clamp(18px, 4vw, 64px);
+  }
+
+  * {
+    border-color: var(--line);
+  }
+
+  ::selection {
+    background-color: var(--ink);
+    color: var(--paper);
+  }
+
+  html {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-inter-tight), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  a, button {
+    outline: none;
+    transition: all 0.25s var(--ease);
+  }
+
+  a:focus-visible, button:focus-visible, [tabindex="0"]:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: var(--font-inter-tight), sans-serif;
+  }
+
+  .font-serif-italic {
+    font-family: var(--font-instrument-serif), Georgia, serif;
+    font-style: italic;
+  }
+
+  .font-mono-code {
+    font-family: var(--font-jetbrains-mono), monospace;
+  }
+
+  .section-container {
+    max-width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+
+  .section-spacing {
+    padding-top: clamp(88px, 12vh, 140px);
+    padding-bottom: clamp(88px, 12vh, 140px);
+  }
+
+  /* Reveal animations */
+  .rv {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    transition-delay: calc(var(--i, 0) * 80ms);
+    will-change: opacity, transform;
+  }
+
+  .rv.is-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .rv-mask {
+    overflow: hidden;
+  }
+
+  .rv-mask > * {
+    transform: translateY(105%);
+    transition: transform 0.8s var(--ease);
+    transition-delay: calc(var(--i, 0) * 80ms);
+    will-change: transform;
+  }
+
+  .rv-mask.is-in > * {
+    transform: translateY(0);
+  }
+
+  /* Cards */
+  .paper-card {
+    background-color: var(--card);
+    border-radius: 28px;
+    box-shadow: inset 0 0 0 1px var(--line), 0 2px 10px rgba(13, 13, 13, 0.02);
+    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  }
+
+  .paper-card:hover {
+    box-shadow: inset 0 0 0 1px rgba(13, 13, 13, 0.16), 0 12px 32px rgba(13, 13, 13, 0.07);
+  }
+
+  /* Pill Buttons */
+  .btn-pill-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: var(--ink);
+    color: #ffffff;
+    border-radius: 9999px;
+    padding: 12px 24px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+  }
+
+  .btn-pill-primary:hover {
+    background-color: #262626;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(13, 13, 13, 0.15);
+  }
+
+  .btn-pill-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: transparent;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 9999px;
+    padding: 12px 24px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+  }
+
+  .btn-pill-secondary:hover {
+    border-color: var(--ink);
+    background-color: rgba(13, 13, 13, 0.04);
+    transform: translateY(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .rv {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .rv-mask > * {
+    transform: none !important;
+  }
+}
